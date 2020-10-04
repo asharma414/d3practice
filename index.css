@@ -1,6 +1,13 @@
-.line-path {
+body {
+    margin: 0px;
+    overflow: hidden;
+  }
+  
+  .line-path {
     fill: none;
     stroke: steelblue;
     stroke-width: 7;
     stroke-linejoin: round;
   }
+  
+  

@@ -75,7 +75,7 @@ const render = data => {
     var div = d3.select("body").append("div")
         .attr("class", "tooltip")
         .style("opacity", 0);
-        
+
     g.selectAll('circle').data(data)
         .enter().append('circle')
         .attr('cy', d => yScale(yValue(d)))
@@ -85,7 +85,7 @@ const render = data => {
             div.transition()
                 .duration(200)
                 .style("opacity", .9);
-            div.html(d.date + "<br/>" + d.close)
+            div.html(d.date.toLocaleString('en-US') + "<br/><br/> Open: $" + d.open + "<br/><br/> Close: $" + d.close + "<br/><br/> Volume(USD): $" + d.volumeUSD)
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY - 28) + "px");
         })
@@ -96,7 +96,7 @@ const render = data => {
         });
 }
 
-d3.csv('https://gist.github.com/asharma414/0a5acc74925a0feb6ebd352fed4fbdf6/raw/78da52a64dccc63c745c4a6f7d89fdd0e35d8444/btc.csv')
+d3.csv('https://gist.github.com/asharma414/0a5acc74925a0feb6ebd352fed4fbdf6/raw/8612f3d13c75f7336b88d4144cec7ab1e0431ba0/btc.csv')
     .then(data => {
         data.forEach(d => {
             d.close = +d.close,
